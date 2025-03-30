@@ -4,12 +4,18 @@ from .models import Movie, Comment
 from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
-
+from django.views.generic import CreateView
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 # Существующее представление списка фильмов
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    template_name = 'registration/signup.html'
+    success_url = reverse_lazy('movie_list')
+
 def movie_list(request):
     movies = Movie.objects.all()
     return render(request, 'movies/movie_list.html', {'movies': movies})
-
 
 # Новое представление для страницы с подробностями фильма
 @login_required  # Ограничиваем доступ только авторизованным пользователям

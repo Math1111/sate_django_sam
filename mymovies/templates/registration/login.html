@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card" style="background: rgba(255, 255, 255, 0.1);">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Вход</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_username" class="form-label">Имя пользователя</label>
+                            <input type="text" name="username" class="form-control" id="id_username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_password" class="form-label">Пароль</label>
+                            <input type="password" name="password" class="form-control" id="id_password" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Войти</button>
+                    </form>
+                    <div class="mt-3 text-center">
+                        <p>Нет аккаунта? <a href="{% url 'signup' %}" style="color: #28a745;">Зарегистрируйтесь</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

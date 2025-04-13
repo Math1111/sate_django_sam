@@ -1,4 +1,4 @@
-#templates\base.html
+#templates/base.html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -36,6 +36,9 @@
                     {% csrf_token %}
                 </form>
                 <a class="nav-item nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</a>
+                <a class="nav-item nav-link" href="https://t.me/My_Favorite_Films_bot?start={{ user.id }}" target="_blank">Telegram</a>
+
+
             {% else %}
                 <a class="nav-item nav-link" href="{% url 'login' %}">Войти</a>
                 <a class="nav-item nav-link" href="{% url 'signup' %}">Регистрация</a>

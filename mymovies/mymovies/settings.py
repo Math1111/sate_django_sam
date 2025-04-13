@@ -6,6 +6,8 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'movie_list'
 LOGOUT_REDIRECT_URL = 'movie_list'
 
+BASE_URL = 'http://localhost:8000'
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -14,7 +16,7 @@ SECRET_KEY = 'django-insecure-$(0e69h9%(q_#31^$k5h$jk7zq&wj@%%5=@@%xvs9e5^=*$+#x
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # Временно для теста
 
 INSTALLED_APPS = [
     'django.contrib.admin',

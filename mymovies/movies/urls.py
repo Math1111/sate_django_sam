@@ -1,4 +1,4 @@
-#movies\urls.py
+#mymovies/movies/urls.py
 from django.urls import path
 from .views import movie_list
 from . import views

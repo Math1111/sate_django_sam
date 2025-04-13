@@ -1,4 +1,4 @@
-#views.py
+#mymovies/movies/views.py
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Movie, Comment
 from .forms import CommentForm
@@ -7,7 +7,7 @@ from django.db.models import Avg
 from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
-# Существующее представление списка фильмов
+
 class SignUpView(CreateView):
     form_class = UserCreationForm
     template_name = 'registration/signup.html'
@@ -17,12 +17,12 @@ def movie_list(request):
     movies = Movie.objects.all()
     return render(request, 'movies/movie_list.html', {'movies': movies})
 
-# Новое представление для страницы с подробностями фильма
-@login_required  # Ограничиваем доступ только авторизованным пользователям
+
+@login_required
 
 def movie_detail(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
-    ##comments = movie.comments.all()  # Получаем все комментарии для этого фильма
+    ##comments = movie.comments.all()
     comments = movie.comments.exclude(text__isnull=True).exclude(text="")
     #average_rating = movie.average_rating()
     average_rating = movie.comments.aggregate(Avg('rating'))['rating__avg']
@@ -32,14 +32,14 @@ def movie_detail(request, movie_id):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.movie = movie  # Привязываем комментарий к фильму
-            comment.user = request.user  # Привязываем комментарий к текущему пользователю
+            comment.movie = movie
+            comment.user = request.user
             comment.save()
-            return redirect('movie_detail', movie_id=movie.id)  # Перезагружаем страницу с новым комментарием
+            return redirect('movie_detail', movie_id=movie.id)
         else:
             print(form.errors)
     else:
-        form = CommentForm()  # Пустая форма, если GET-запрос
+        form = CommentForm()
 
 
     return render(request, 'movies/movie_detail.html', {

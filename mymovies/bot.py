@@ -3,6 +3,8 @@ from telegram.ext import Updater, CommandHandler, CallbackContext
 import django
 import os
 from django.conf import settings
+import logging
+logging.basicConfig(level=logging.INFO)
 
 # Настройка Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mymovies.settings")

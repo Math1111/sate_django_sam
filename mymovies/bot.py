@@ -1,4 +1,4 @@
-from telegram import Update, InputMediaPhoto
+import Update, InputMediaPhoto
 from telegram.ext import Updater, CommandHandler, CallbackContext
 import django
 import os

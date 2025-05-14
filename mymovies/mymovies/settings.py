@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-$(0e69h9%(q_#31^$k5h$jk7zq&wj@%%5=@@%xvs9e5^=*$+#x
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']  # Временно для теста
+ALLOWED_HOSTS = ['Matthev.pythonanywhere.com']  # Временно для теста
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'movies',
+    'telegrambot',
 ]
 
 MIDDLEWARE = [
